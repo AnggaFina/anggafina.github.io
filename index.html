@@ -969,7 +969,7 @@ let tempLinkSelesai = '';
                     </span>
                 </p>
                 ${isCompleted && item.fixed_link ? `<p><strong>🔗 Link Game Fixed:</strong> <a href="${item.fixed_link}" target="_blank" style="color: #10b981;">${item.fixed_link}</a></p>` : ''}
-                ${isCompleted && item.pesan_owner ? `<p><strong>💬 Pesan Owner:</strong> ${item.pesan_owner}</p>` : ''}
+                ${isCompleted && item.pesan_owner ? `<p><strong>💬 Pesan Owner:</strong> <span style="background: #f0fdf4; padding: 8px; border-radius: 6px; display: block; margin-top: 5px; border-left: 3px solid #10b981;">${item.pesan_owner}</span></p>` : ''}
                 ${isCompleted ? `<p><strong>🛡️ Approved By:</strong> AnggaPutraJN ✅ </p>` : ''}
             
                 <p class="timestamp">${timestamp}</p>
