@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Game INDapk</title>
+    <title>Report Link</title>
     <style>
         * {
             margin: 0;
@@ -671,39 +671,39 @@
 <body>
     <div class="main-container">
         <div class="header">
-            <h1>🎮 Request Game INDapk</h1>
-            <p>Platform Request Game Terlengkap & Terpercaya</p>
+            <h1>🎮 Report Link</h1>
+            <p>LAPORKAN LINK ANDA DIBAWAH </p>
         </div>
 
         <!-- Tab Navigation -->
         <div class="tab-navigation">
             <button class="tab-button active" onclick="showTab('request')">
-                📝 Request Game
+                📝 Report Link
             </button>
             <button class="tab-button" onclick="showTab('list')">
-                📋 Daftar Request Game
+                📋 Daftar Report Link
             </button>
         </div>
 
         <div class="content-wrapper">
-            <!-- Request Game Tab -->
+            <!-- Report Link Tab -->
             <div id="requestTab" class="tab-content active">
                 <div class="form-section">
-                    <h2 class="section-title">📝 Request Game Baru</h2>
+                    <h2 class="section-title">📝 Report Link</h2>
                     
                     <form id="gameForm">
                         <div class="form-group">
-                            <label for="nama_pengguna">Nama Pengguna <span class="optional-label">(wajib diisi)</span></label>
+                            <label for="nama_pengguna">Nama Pengguna *</label>
                             <input type="text" id="nama_pengguna" name="nama_pengguna" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="nama_game">Nama Game <span class="optional-label">(wajib diisi)</span></label>
+                            <label for="nama_game">Nama Game *</label>
                             <input type="text" id="nama_game" name="nama_game" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="jenis_emulator">Jenis Emulator <span class="optional-label">(wajib diisi)</span></label>
+                            <label for="jenis_emulator">Jenis Emulator *</label>
                             <select id="jenis_emulator" name="jenis_emulator" required>
                                 <option value="">Pilih Emulator</option>
                                 <option value="Switch">Switch</option>
@@ -722,14 +722,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="version_game">Version Game <span class="optional-label">(Optional)</span></label>
-                            <input type="text" id="version_game" name="version_game" placeholder="Contoh: v1.2.3, Update 2024">
+                            <label for="link_mati">Link Yang Rusak *</label>
+                            <input type="text" id="link_mati" name="link_mati" placeholder="https://example.com/game-mod" required>
+                            <div class="help-text">Kirimkan Link Yang Mati</div>
                         </div>
 
                         <div class="form-group">
-                            <label for="link_game">Link Game <span class="optional-label">(Optional)</span></label>
-                            <input type="text" id="link_game" name="link_game" placeholder="https://example.com/game-mod">
-                            <div class="help-text">Jika punya link bahan mod, silahkan masukkan linknya</div>
+                            <label for="alasan_rusak">Alasan Rusak *</label>
+                            <textarea id="alasan_rusak" name="alasan_rusak" placeholder="Contoh: Tidak Bisa Diakses" required></textarea>
+                            <div class="help-text">Berikan alasan Errornya</div>
                         </div>
 
                         <div class="form-group">
@@ -745,7 +746,7 @@
                         </div>
 
                         <button type="submit" class="btn" id="submitBtn">
-                            🚀 Kirim Request Game
+                            🚀 Kirim Report Link
                         </button>
                     </form>
 
@@ -757,10 +758,10 @@
                 </div>
             </div>
 
-            <!-- Daftar Request Game Tab -->
+            <!-- Daftar Report Link Tab -->
             <div id="listTab" class="tab-content">
                 <div class="list-section">
-                    <h2 class="section-title">📋 Daftar Request Game</h2>
+                    <h2 class="section-title">📋 Daftar Report Link</h2>
                     
                     <button type="button" class="btn refresh-btn" onclick="loadData()">
                         🔄 Refresh Data
@@ -769,7 +770,7 @@
                     <div id="dataContainer">
                         <div class="empty-state">
                             <div class="icon">🎮</div>
-                            <p>Memuat data request game...</p>
+                            <p>Memuat data Report Link...</p>
                         </div>
                     </div>
                 </div>
@@ -780,15 +781,14 @@
     <!-- Modal Link Selesai -->
     <div id="linkModal" class="modal">
         <div class="modal-content">
-            <h3>🔗 Input Data Game Selesai</h3>
+            <h3>🔗 Masukkan Link Game Selesai</h3>
             <div class="form-group" style="margin: 20px 0; text-align: left;">
-                <label for="linkSelesaiInput">Link Game yang Sudah Selesai:</label>
+                <label for="linkSelesaiInput">Fixed Link:</label>
                 <input type="text" id="linkSelesaiInput" placeholder="https://example.com/completed-game" style="width: 100%; margin-top: 8px;">
             </div>
-            <!-- TAMBAHAN BARU: Input Pesan Owner -->
             <div class="form-group" style="margin: 20px 0; text-align: left;">
-                <label for="pesanOwnerInput">Pesan Owner <span class="optional-label">(Optional)</span>:</label>
-                <textarea id="pesanOwnerInput" placeholder="Contoh: Game sudah selesai dimod, silahkan download di link di atas" 
+                <label for="pesanOwnerInput">Pesan Owner:</label>
+                <textarea id="pesanOwnerInput" placeholder="Masukkan pesan untuk user..." 
                         style="width: 100%; margin-top: 8px; min-height: 80px; resize: vertical;"></textarea>
             </div>
             <div class="modal-buttons">
@@ -810,9 +810,12 @@
         </div>
     </div>
 
+
+
+
     <script>
 
-document.getElementById('link_game').addEventListener('input', function () {
+document.getElementById('link_mati').addEventListener('input', function () {
     const input = this.value;
     const helpText = document.getElementById('linkHelp');
 
@@ -850,7 +853,7 @@ document.getElementById('link_game').addEventListener('input', function () {
                 loadData();
             }
         }
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRhhj9yw17YeIeClqC1u9o8zp7qCcHSdhKP6gBwJ0CjciOOKF7XhLRenKz0CksebM/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbymI70mHXvC5tp8uPunNqvtCfI98_rizTeKGe8aqKls4c509duf4E1hJDyq2HpG1EA/exec';
         let currentAction = null;
         let currentId = null;
 
@@ -870,9 +873,10 @@ document.getElementById('link_game').addEventListener('input', function () {
         formData.append('nama_pengguna', document.getElementById('nama_pengguna').value);
         formData.append('nama_game', document.getElementById('nama_game').value);
         formData.append('jenis_emulator', document.getElementById('jenis_emulator').value);
-        formData.append('version_game', document.getElementById('version_game').value);
-        formData.append('link_game', document.getElementById('link_game').value);
+        formData.append('link_mati', document.getElementById('link_mati').value);
+        formData.append('alasan_rusak', document.getElementById('alasan_rusak').value);
         formData.append('rating_web', document.getElementById('rating_web').value);
+        formData.append('pesan_owner', document.getElementById('pesan_owner').value);
         
         fetch(SCRIPT_URL, {
             method: 'POST',
@@ -936,51 +940,50 @@ document.getElementById('link_game').addEventListener('input', function () {
 
 let tempLinkSelesai = '';
         function displayData(data) {
-            const dataContainer = document.getElementById('dataContainer');
+    const dataContainer = document.getElementById('dataContainer');
+    
+    if (!data || data.length === 0) {
+        dataContainer.innerHTML = '<p style="text-align:center; color: #6b7280;">📝 Belum ada Report Link.</p>';
+        return;
+    }
+    
+    let html = '';
+    data.reverse().forEach(item => {
+        const timestamp = new Date(item.timestamp).toLocaleString('id-ID');
+        const status = item.status_report || 'PENDING';
+        const isCompleted = status === 'SELESAI';
+        const isPending = status === 'PENDING';
+        
+        html += `
+            <div class="data-item ${isCompleted ? 'completed' : ''}">
+                <h3>🎮 ${item.nama_game}</h3>
+                <p><strong>👤 Pengguna:</strong> ${item.nama_pengguna}</p>
+                <p><strong>🕹️ Emulator:</strong> ${item.jenis_emulator}</p>
+                ${item.link_mati ? `<p><strong>🔗 Link Mati:</strong> <a href="${item.link_mati}" target="_blank" style="color: #3498db;">${item.link_mati}</a></p>` : ''}
+                ${item.alasan_rusak ? `<p><strong>📝 Alasan Rusak</strong> ${item.alasan_rusak}</p>` : ''}
+                ${item.rating_web ? `<p><strong>⭐ Rating:</strong> <span class="rating-stars">${item.rating_web}</span></p>` : ''}
+                <p><strong>📊 Status:</strong> 
+                    <span class="status-badge ${status === 'SELESAI' ? 'status-selesai' : 'status-pending'}" 
+                          onclick="${isPending ? `showLinkModal('${item.nama_game}', ${item.id})` : ''}">
+                        ${status}
+                    </span>
+                </p>
+                ${isCompleted && item.fixed_link ? `<p><strong>🔗 Link Game Fixed:</strong> <a href="${item.fixed_link}" target="_blank" style="color: #10b981;">${item.fixed_link}</a></p>` : ''}
+                ${isCompleted && item.pesan_owner ? `<p><strong>💬 Pesan Owner:</strong> ${item.pesan_owner}</p>` : ''}
+                ${isCompleted ? `<p><strong>🛡️ Approved By:</strong> AnggaPutraJN ✅ </p>` : ''}
             
-            if (!data || data.length === 0) {
-                dataContainer.innerHTML = '<p style="text-align:center; color: #6b7280;">📝 Belum ada request game.</p>';
-                return;
-            }
-            
-            let html = '';
-            data.reverse().forEach(item => {
-                const timestamp = new Date(item.timestamp).toLocaleString('id-ID');
-                const status = item.status_req || 'PENDING';
-                const isCompleted = status === 'SELESAI';
-                const isPending = status === 'PENDING';
+                <p class="timestamp">${timestamp}</p>
                 
-                html += `
-                    <div class="data-item ${isCompleted ? 'completed' : ''}">
-                        <h3>🎮 ${item.nama_game}</h3>
-                        <p><strong>👤 Pengguna:</strong> ${item.nama_pengguna}</p>
-                        <p><strong>🕹️ Emulator:</strong> ${item.jenis_emulator}</p>
-                        ${item.version_game ? `<p><strong>📦 Version:</strong> ${item.version_game}</p>` : ''}
-                        ${item.link_game ? `<p><strong>🔗 Link:</strong> <a href="${item.link_game}" target="_blank" style="color: #3498db;">${item.link_game}</a></p>` : ''}
-                        ${item.rating_web ? `<p><strong>⭐ Rating:</strong> <span class="rating-stars">${item.rating_web}</span></p>` : ''}
-                        <p><strong>📊 Status:</strong> 
-                            <span class="status-badge ${status === 'SELESAI' ? 'status-selesai' : 'status-pending'}" 
-                                onclick="${isPending ? `showLinkModal('${item.nama_game}', ${item.id})` : ''}">
-                                ${status}
-                            </span>
-                        </p>
-                        ${isCompleted && item.link_selesai ? `<p><strong>🔗 Link Game Request:</strong> <a href="${item.link_selesai}" target="_blank" style="color: #10b981;">${item.link_selesai}</a></p>` : ''}
-                        <!-- TAMBAHAN BARU: Tampilkan pesan owner jika ada -->
-                        ${isCompleted && item.pesan_owner ? `<p><strong>💬 Pesan Owner:</strong> <span style="background: #f0fdf4; padding: 8px; border-radius: 6px; display: block; margin-top: 5px; border-left: 3px solid #10b981;">${item.pesan_owner}</span></p>` : ''}
-                        ${isCompleted ? `<p><strong>🛡️ Approved By:</strong> AnggaPutraJN ✅ </p>` : ''}
-                    
-                        <p class="timestamp">${timestamp}</p>
-                        
-                        <div class="action-buttons">
-                            ${isPending ? `<button class="btn btn-small btn-success" onclick="showLinkModal('${item.nama_game}', ${item.id})">✅ Tandai Selesai</button>` : ''}
-                            <button class="btn btn-small btn-danger" onclick="showModal('delete', ${item.id}, '${item.nama_game}')">🗑️ Hapus Request</button>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            dataContainer.innerHTML = html;
-        }
+                <div class="action-buttons">
+                    ${isPending ? `<button class="btn btn-small btn-success" onclick="showLinkModal('${item.nama_game}', ${item.id})">✅ Tandai Selesai</button>` : ''}
+                    <button class="btn btn-small btn-danger" onclick="showModal('delete', ${item.id}, '${item.nama_game}')">🗑️ Hapus Request</button>
+                </div>
+            </div>
+        `;
+    });
+    
+    dataContainer.innerHTML = html;
+}
 // MODIFIKASI fungsi untuk menampilkan modal input link
 function showLinkModal(gameName, id) {
     currentId = id;
@@ -998,17 +1001,17 @@ function showLinkModal(gameName, id) {
 
 function closeLinkModal() {
     document.getElementById('linkModal').style.display = 'none';
-    document.getElementById('linkSelesaiInput').value = ''; // Reset link input
-    document.getElementById('pesanOwnerInput').value = ''; // TAMBAHAN BARU - Reset pesan input
+    document.getElementById('linkSelesaiInput').value = ''; // Tambahkan ini
+    document.getElementById('pesanOwnerInput').value = ''; // Tambahkan ini
     currentId = null;
 }
 
 // MODIFIKASI fungsi untuk submit link selesai
 function submitLinkSelesai() {
     const linkInput = document.getElementById('linkSelesaiInput');
-    const pesanInput = document.getElementById('pesanOwnerInput'); // TAMBAHAN BARU
+    const pesanInput = document.getElementById('pesanOwnerInput');
     const link = linkInput.value.trim();
-    const pesan = pesanInput.value.trim(); // TAMBAHAN BARU
+    const pesanOwner = pesanInput.value.trim();
     
     // Validasi link (opsional - bisa dikomentari jika tidak ingin validasi)
     if (link && !link.startsWith('http://') && !link.startsWith('https://')) {
@@ -1021,8 +1024,8 @@ function submitLinkSelesai() {
     const formData = new FormData();
     formData.append('action', 'markDone');
     formData.append('id', currentId);
-    formData.append('link_selesai', link);
-    formData.append('pesan_owner', pesan); // TAMBAHAN BARU
+    formData.append('fixed_link', link);
+    formData.append('pesan_owner', pesanOwner);
     
     // Show loading state
     const submitBtn = document.querySelector('#linkModal .btn-success');
@@ -1053,7 +1056,6 @@ function submitLinkSelesai() {
         showMessage('Terjadi kesalahan: ' + error.message, 'error');
     });
 }
-
         function showModal(action, id, gameName) {
             currentAction = action;
             currentId = id;
@@ -1064,10 +1066,10 @@ function submitLinkSelesai() {
             
             if (action === 'delete') {
                 title.textContent = '🗑️ Hapus Request';
-                message.textContent = `Apakah Anda yakin ingin menghapus request game "${gameName}"? Aksi ini tidak dapat dibatalkan.`;
+                message.textContent = `Apakah Anda yakin ingin menghapus Report Link "${gameName}"? Aksi ini tidak dapat dibatalkan.`;
             } else if (action === 'markDone') {
                 title.textContent = '✅ Tandai Selesai';
-                message.textContent = `Apakah Anda yakin ingin menandai request game "${gameName}" sebagai SELESAI?`;
+                message.textContent = `Apakah Anda yakin ingin menandai Report Link "${gameName}" sebagai SELESAI?`;
             }
             
             modal.style.display = 'block';
