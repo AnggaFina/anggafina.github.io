@@ -958,6 +958,25 @@
     </div>
 
     <script>
+
+document.getElementById('link_mati').addEventListener('input', function () {
+    const input = this.value;
+    const helpText = document.getElementById('linkHelp');
+
+    // Pola regex untuk URL dengan http/https
+    const urlPattern = /^(https?:\/\/)[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+
+    if (urlPattern.test(input)) {
+        this.setCustomValidity('');
+        helpText.style.color = 'green';
+        helpText.textContent = 'Link valid';
+    } else {
+        this.setCustomValidity('Harap masukkan link dengan format yang benar (contoh: https://example.com)');
+        helpText.style.color = 'red';
+        helpText.textContent = 'Format link tidak valid. Gunakan format: https://example.com';
+    }
+});
+
         // Theme Switcher Functionality
         const themeToggle = document.getElementById('themeToggle');
         const savedTheme = localStorage.getItem('theme') || 'light';
